@@ -10,6 +10,7 @@ const upload=multer({dest: ' uploads/' })
 router.use(express.json())
 
 router.post("/register",trycatch(controller.register))
+router.use(verifyToken)
 router.post("/login",trycatch(controller.login))
 router.post("/user",upload.single('photo'),trycatch(controller.Createuser))
 router.get("/user",trycatch(controller.getAllusers))

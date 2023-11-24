@@ -32,10 +32,10 @@ module.exports={
    login:async(req,res)=>{
       
     const {username,password}=req.body
-        // console.log(req.body)
+        console.log(req.body)
 
   const admin=Admin.findOne({
-    username:username,
+    username:username,    
     password:password
   })
   if(!admin){
@@ -43,8 +43,8 @@ module.exports={
   }
   const token=jwt.sign(
      {username:admin.username},
-     process.env.ACCESS_TOKEN_SECRET
-  );
+    process.env.ACCESS_TOKEN_SECRET
+  )
  res.json({Message:"login succesfull",token})
   
   },
